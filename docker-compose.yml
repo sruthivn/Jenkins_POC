@@ -24,7 +24,7 @@ services:
     depends_on:
       - poc-db      
   poc-db:  
-    container_name: poc-db
+   # container_name: poc-db
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root123
