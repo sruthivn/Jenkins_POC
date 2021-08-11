@@ -3,7 +3,7 @@ services:
   poc-frontend:
     container_name: poc-frontend
     build:
-      context: ../frontend
+      context: ./frontend
       dockerfile: Dockerfile    
     ports:
       - "9009:80"     
@@ -12,11 +12,11 @@ services:
   poc-backend:
     container_name: poc-backend
     build:
-      context: ../backend
+      context: ./backend
     ports:
       - "9008:8000"
     volumes:
-      - ../backend:/backend
+      - ./backend:/backend
     command: >
       sh -c "python3 manage.py makemigrations &&            
           python3 manage.py migrate &&                 
@@ -33,7 +33,7 @@ services:
       MYSQL_PASSWORD: admin123
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     volumes:
-      - ../backend/data/mysql/db:/var/lib/mysql
+      - ./backend/data/mysql/db:/var/lib/mysql
     ports:
       - "9003:3306"    
   poc-phpmyadmin:
